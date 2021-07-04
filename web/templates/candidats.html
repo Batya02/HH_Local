@@ -3,8 +3,9 @@
 {% block content %}
     <!--<h1>{% block title %}Candidats{% endblock %}</h1>-->
     {% for candidat in candidats %} 
+        <h6>{{ candidat.user_id }}</h6>
         <span class="badge badge-primary">ID: {{ candidat.id }}</span>
-        <span class="badge badge-primary">User Id: {{ candidat.user_id }}</span>
+        <!--<span class="badge badge-primary">User Id: {{ candidat.user_id }}</span>-->
         <span class="badge badge-primary">Дата создания: {{ (candidat.created|string)[:-7] }}</span>
         <br>
         <span class="badge badge-primary">ФИО: {{ candidat.fio }}</span>
