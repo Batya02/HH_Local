@@ -1,5 +1,6 @@
 _db/
 bot/config.json
+web/config.json
 Lib/
 Scripts/
 Include/
