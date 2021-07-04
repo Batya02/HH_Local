@@ -5,7 +5,7 @@
     {% for _resume in resume %} 
         <span class="badge badge-primary">ID: {{ _resume.id }}</span>
         <span class="badge badge-primary">User Id: {{ _resume.user_id }}</span>
-        <span class="badge badge-primary">Дата создания: {{ (candidat.created|string)[:-7] }}</span>
+        <span class="badge badge-primary">Дата создания: {{ (_resume.created|string)[:-7] }}</span>
         <br>
         <span class="badge badge-primary">Компания: {{ _resume.company }}</span>
         <span class="badge badge-primary">Должность: {{ _resume.position }}</span>
