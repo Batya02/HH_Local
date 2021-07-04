@@ -3,8 +3,9 @@
 {% block content %}
     <!--<h1>{% block title %}Emplpoyers{% endblock %}</h1>-->
     {% for employer in employers %} 
+        <h6>{{ employer.user_id }}</h6>
         <span class="badge badge-primary">ID: {{ employer.id }}</span>
-        <span class="badge badge-primary">User Id: {{ employer.user_id }}</span>
+        <!--<span class="badge badge-primary">User Id: {{ employer.user_id }}</span>-->
         <span class="badge badge-primary">Дата создания: {{ (employer.created|string)[:-7] }}</span>
         <br>
         <span class="badge badge-primary">Имя компании: {{ employer.name_company }}</span>
