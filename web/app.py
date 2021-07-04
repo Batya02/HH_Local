@@ -5,7 +5,8 @@ from sqlalchemy import MetaData, create_engine
 
 from objects import globals
 
-globals.app = Flask(__name__)
+globals.app = Flask("/var/www/")
+globals.app.config['SECRET_KEY'] = "top_programmer"
 globals.app.config['TEMPLATES_AUTO_RELOAD'] = True 
 
 #Database
@@ -23,4 +24,4 @@ async def main():
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
-    globals.app.run("127.0.0.1", "5000")
+    globals.app.run(host="127.0.0.1", port="5000")
