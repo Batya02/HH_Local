@@ -10,7 +10,7 @@ globals.app.config['SECRET_KEY'] = "top_programmer"
 globals.app.config['TEMPLATES_AUTO_RELOAD'] = True 
 
 #Database
-globals.db = Database("sqlite:///../_db/HH.sqlite")
+globals.db = Database("sqlite:///root/HH_Local/_db/HH.sqlite")
 globals.metadata = MetaData()
 
 globals.db_engine = create_engine(str(globals.db.url))
