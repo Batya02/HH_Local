@@ -1,0 +1,11 @@
+_db/
+bot/config.json
+Lib/
+Scripts/
+Include/
+pyvenv.cfg
+
+bot/commands/__pycache__
+bot/db_models/__pycache__
+bot/objects/__pycache__
+bot/states/__pycache__

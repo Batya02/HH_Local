@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!--<h1>{% block title %}Candidats{% endblock %}</h1>-->
+    {% for _resume in resume %} 
+        <span class="badge badge-primary">ID: {{ _resume.id }}</span>
+        <span class="badge badge-primary">User Id: {{ _resume.user_id }}</span>
+        <span class="badge badge-primary">Дата создания: {{ (candidat.created|string)[:-7] }}</span>
+        <br>
+        <span class="badge badge-primary">Компания: {{ _resume.company }}</span>
+        <span class="badge badge-primary">Должность: {{ _resume.position }}</span>
+        <span class="badge badge-primary">Опыт работы: {{ _resume.experience }}</span>
+        <span class="badge badge-primary">Результаты: {{ _resume.results }}</span>
+        <span class="badge badge-primary">Причина увольнения: {{ _resume.dismissal }}</span>
+        <hr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!--<h1>{% block title %}Candidats{% endblock %}</h1>-->
+    {% for candidat in candidats %} 
+        <span class="badge badge-primary">ID: {{ candidat.id }}</span>
+        <span class="badge badge-primary">User Id: {{ candidat.user_id }}</span>
+        <span class="badge badge-primary">Дата создания: {{ (candidat.created|string)[:-7] }}</span>
+        <br>
+        <span class="badge badge-primary">ФИО: {{ candidat.fio }}</span>
+        <span class="badge badge-primary">Дата рождения: {{ candidat.date_born }}</span>
+        <span class="badge badge-primary">Адрес: {{ candidat.adress }}</span>
+        <span class="badge badge-primary">Почта: {{ candidat.email }}</span>
+        <span class="badge badge-primary">Телефон: {{ candidat.phone }}</span>
+        <span class="badge badge-primary">Ссылка: {{ candidat.url }}</span>
+        <hr>
+    {% endfor %}
+{% endblock %}
