@@ -29,7 +29,7 @@ async def employers():
         elif "one-add-of-unspam-employer" in request.form:
             user_id_unspam = main_user = int(request.form.get("one-add-of-unspam-employer"))
             user_spam_status = await User.objects.get(user_id=user_id_unspam)
-            await user_spam_status.update(verification=0)
+            await user_spam_status.update(spam=0)
         
         more_info_employer = await User.objects.filter(user_id=main_user).all()
         return render_template("more-information-employer.html", user_data=more_info_employer)
