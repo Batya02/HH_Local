@@ -1,17 +1,18 @@
-import socket 
-
 from objects.globals import app
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, jsonify
 
 from db_models.Users import User
+
+from requests import get
+from json import loads
+
+from objects.globals import config
 
 @app.route("/", methods=["GET", "POST"])
 async def index():
 
-    hostname = socket.gethostname()
-    ip_adress = socket.gethostbyname(hostname)
-
-    main_user:int = 0
+    user_info = loads(get(config["USER_INFO_URL"]).text)
+    ip_adress = user_info["ipAddress"]
 
     if request.method == "POST":
         if "get-user-id" in request.form:
