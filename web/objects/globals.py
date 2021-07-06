@@ -6,3 +6,5 @@ metadata:MetaData = None
 db_engine = None
 
 app = None
+
+config:dict = {}
