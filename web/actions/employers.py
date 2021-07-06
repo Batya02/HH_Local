@@ -8,6 +8,7 @@ from db_models.Users import User
 async def employers():
     main_user:int = 0
     if request.method == "POST":
+        print(request.form)
         if "more-information-employer" in request.form:
             main_user = int(request.form.get("more-information-employer"))
         
