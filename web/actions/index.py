@@ -34,5 +34,8 @@ async def index():
             user_id_unspam = main_user = int(request.form.get("one-add-of-unspam-find_user"))
             user_spam_status = await User.objects.get(user_id=user_id_unspam)
             await user_spam_status.update(spam=0)
+        
+        user_find_data= await User.objects.filter(user_id=main_user).all()
+        return render_template("find_user.html", user_data=user_find_data)
 
     return render_template("index.html")
