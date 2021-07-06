@@ -2,17 +2,18 @@
 
 {% block content %}
     {% for user in user_data %}
-        <h5><span class="badge badge-info">ID: {{ user.id }}</span>
-        <span class="badge badge-info">User Id: {{ user.user_id }}</span>
+        <h2 style="color: white;">Основной аккаунт</h2>
+        <h5><span class="badge badge-info" style="color: black;">ID: {{ user.id }}</span>
+        <span class="badge badge-info" style="color: black;">User Id: {{ user.user_id }}</span>
         {% if user.username != None %}
-            <a href="https://t.me/{{user.username}}" class="badge badge-info">Username: {{ user.username }}</a>
+            <a href="https://t.me/{{user.username}}" class="badge badge-info" style="color: black;">Username: @{{ user.username }}</a>
         {% else %}
-            <span class="badge badge-info">Username: Отсутствует</span>
+            <span class="badge badge-info" style="color: black;">Username: Отсутствует</span>
         {% endif %}
-        <span class="badge badge-info">Дата регистрации: {{ (user.created | string)[:-7]  }}</span>
-        <span class="badge badge-info">Тип: {{ user.type }}</span>
-        <span class="badge badge-secondary">Верификация: {{ user.verification }}</span>
-        <span class="badge badge-secondary">Спам: {{ user.spam }}</span></h5>
+        <span class="badge badge-info" style="color: black;">Дата регистрации: {{ (user.created | string)[:-7]  }}</span>
+        <span class="badge badge-info" style="color: black;">Тип: {{ user.type }}</span>
+        <span class="badge badge-secondary" style="color: black;">Верификация: {{ user.verification }}</span>
+        <span class="badge badge-secondary" style="color: black;">Спам: {{ user.spam }}</span></h5>
         <br>
         <form method="post">
         {% if user.verification == 0 %}

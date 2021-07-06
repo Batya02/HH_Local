@@ -16,14 +16,14 @@
         <br>
         <form method="post">
         {% if user.verification == 0 %}
-            <button type="submit" class="btn btn-success btn-sm" name="one-add-verification-employer" value="{{user.user_id}}">Верифицировать</button>
+            <button type="submit" class="btn btn-success btn-sm" name="one-add-verification-find_user" value="{{user.user_id}}">Верифицировать</button>
         {% else %}
-            <button type="submit" class="btn btn-danger btn-sm" name="one-add-unverification-employer" value="{{user.user_id}}">Убрать верификацию</button>
+            <button type="submit" class="btn btn-danger btn-sm" name="one-add-unverification-find_user" value="{{user.user_id}}">Убрать верификацию</button>
         {% endif %}
         {% if user.spam == 0 %}
-            <button type="submit" class="btn btn-success btn-sm" name="one-add-in-spam-employer" value="{{user.user_id}}">Добавить в спам</button>
+            <button type="submit" class="btn btn-success btn-sm" name="one-add-in-spam-find_user" value="{{user.user_id}}">Добавить в спам</button>
         {% else %}
-            <button type="submit" class="btn btn-danger btn-sm" name="one-add-of-unspam-employer" value="{{user.user_id}}">Убрать из спама</button>
+            <button type="submit" class="btn btn-danger btn-sm" name="one-add-of-unspam-find_user" value="{{user.user_id}}">Убрать из спама</button>
         {% endif %}
         </form>
         <hr>

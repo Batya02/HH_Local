@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!--<h1>{% block title %}Emplpoyers{% endblock %}</h1>-->
     {% for employer in employers %} 
-        <h6>{{ employer.user_id }}</h6>
-        <span class="badge badge-primary">ID: {{ employer.id }}</span>
-        <!--<span class="badge badge-primary">User Id: {{ employer.user_id }}</span>-->
-        <span class="badge badge-primary">Дата создания: {{ (employer.created|string)[:-7] }}</span>
+        <div class="btn-group dropright">
+          <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{employer.user_id}}
+          </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <form method="post">
+                <button type="submit" class="dropdown-item" type="button" name="more-information-employer" value="{{employer.user_id}}">Больше информации</button>
+                </form>
+            </div>
+        </div>
         <br>
-        <span class="badge badge-primary">Имя компании: {{ employer.name_company }}</span>
-        <span class="badge badge-primary">ФИО: {{ employer.fio }}</span>
-        <span class="badge badge-primary">Профиль: {{ employer.profile }}</span>
-        <span class="badge badge-primary">Адрес: {{ employer.adress }}</span>
-        <span class="badge badge-primary">Телефон: {{ employer.phone }}</span>
-        <span class="badge badge-primary">Почта: {{ employer.email }}</span>
-        <span class="badge badge-primary">Ссылка: {{ employer.url }}</span>
-        
+        <h5><span class="badge badge-primary" style="color: black;">ID: {{ employer.id }}</span>
+        <span class="badge badge-primary" style="color: black;">Дата создания: {{ (employer.created|string)[:-7] }}</span>
         <br>
-        <br>
-        <form method="post">
-        <button type="submit" class="btn btn-dark btn-sm btn-block" name="more-information-employer" value="{{employer.user_id}}">Подробно...</button>
-        </form>
+        <span class="badge badge-primary" style="color: black;">Имя компании: {{ employer.name_company }}</span>
+        <span class="badge badge-primary" style="color: black;">ФИО: {{ employer.fio }}</span>
+        <span class="badge badge-primary" style="color: black;">Профиль: {{ employer.profile }}</span>
+        <span class="badge badge-primary" style="color: black;">Адрес: {{ employer.adress }}</span>
+        <span class="badge badge-primary" style="color: black;">Телефон: {{ employer.phone }}</span>
+        <span class="badge badge-primary" style="color: black;">Почта: {{ employer.email }}</span>
+        <span class="badge badge-primary" style="color: black;">Ссылка: {{ employer.url }}</span></h5>
         <hr>
     {% endfor %}
 {% endblock %}

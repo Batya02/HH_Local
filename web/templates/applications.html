@@ -3,15 +3,15 @@
 {% block content %}
     <!--<h1>{% block title %}Candidats{% endblock %}</h1>-->
     {% for application in applications %} 
-        <span class="badge badge-primary">ID: {{ application.id }}</span>
-        <span class="badge badge-primary">User Id: {{ application.user_id }}</span>
-        <span class="badge badge-primary">Дата создания: {{ (application.created|string)[:-7] }}</span>
+        <h5><span class="badge badge-primary" style="color: black;">ID: {{ application.id }}</span>
+        <span class="badge badge-primary" style="color: black;">User Id: {{ application.user_id }}</span>
+        <span class="badge badge-primary" style="color: black;">Дата создания: {{ (application.created|string)[:-7] }}</span>
         <br>
-        <span class="badge badge-primary">Должность: {{ application.position }}</span>
-        <span class="badge badge-primary">Опыт работы: {{ application.experience }}</span>
-        <span class="badge badge-primary">Возраст: {{ application.age }}</span>
-        <span class="badge badge-primary">Заработная плата: {{ application.wage }}</span>
-        <span class="badge badge-primary">Выполняемые задачи: {{ application.tasks }}</span>
+        <span class="badge badge-primary" style="color: black;">Должность: {{ application.position }}</span>
+        <span class="badge badge-primary" style="color: black;">Опыт работы: {{ application.experience }}</span>
+        <span class="badge badge-primary" style="color: black;">Возраст: {{ application.age }}</span>
+        <span class="badge badge-primary" style="color: black;">Заработная плата: {{ application.wage }}</span>
+        <span class="badge badge-primary" style="color: black;">Выполняемые задачи: {{ application.tasks }}</span></h5>
         <hr>
     {% endfor %}
 {% endblock %}

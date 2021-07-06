@@ -3,15 +3,15 @@
 {% block content %}
     <!--<h1>{% block title %}Candidats{% endblock %}</h1>-->
     {% for _resume in resume %} 
-        <span class="badge badge-primary">ID: {{ _resume.id }}</span>
-        <span class="badge badge-primary">User Id: {{ _resume.user_id }}</span>
-        <span class="badge badge-primary">Дата создания: {{ (_resume.created|string)[:-7] }}</span>
+        <h5><span class="badge badge-primary" style="color: black;">ID: {{ _resume.id }}</span>
+        <span class="badge badge-primary" style="color: black;">User Id: {{ _resume.user_id }}</span>
+        <span class="badge badge-primary" style="color: black;">Дата создания: {{ (_resume.created|string)[:-7] }}</span>
         <br>
-        <span class="badge badge-primary">Компания: {{ _resume.company }}</span>
-        <span class="badge badge-primary">Должность: {{ _resume.position }}</span>
-        <span class="badge badge-primary">Опыт работы: {{ _resume.experience }}</span>
-        <span class="badge badge-primary">Результаты: {{ _resume.results }}</span>
-        <span class="badge badge-primary">Причина увольнения: {{ _resume.dismissal }}</span>
+        <span class="badge badge-primary" style="color: black;">Компания: {{ _resume.company }}</span>
+        <span class="badge badge-primary" style="color: black;">Должность: {{ _resume.position }}</span>
+        <span class="badge badge-primary" style="color: black;">Опыт работы: {{ _resume.experience }}</span>
+        <span class="badge badge-primary" style="color: black;">Результаты: {{ _resume.results }}</span>
+        <span class="badge badge-primary" style="color: black;">Причина увольнения: {{ _resume.dismissal }}</span></h5>
         <hr>
     {% endfor %}
 {% endblock %}
