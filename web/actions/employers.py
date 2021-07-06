@@ -35,5 +35,4 @@ async def employers():
         return render_template("more-information-employer.html", user_data=more_info_employer)
 
     employers_data = await Employer.objects.all()
-
     return render_template("employers.html", employers=employers_data)
