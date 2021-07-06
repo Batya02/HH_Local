@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for user in user_data %}
+        <h5><span class="badge badge-info">ID: {{ user.id }}</span>
+        <span class="badge badge-info">User Id: {{ user.user_id }}</span>
+        {% if user.username != None %}
+            <a href="https://t.me/{{user.username}}" class="badge badge-info">Username: {{ user.username }}</a>
+        {% else %}
+            <span class="badge badge-info">Username: Отсутствует</span>
+        {% endif %}
+        <span class="badge badge-info">Дата регистрации: {{ (user.created | string)[:-7]  }}</span>
+        <span class="badge badge-info">Тип: {{ user.type }}</span>
+        <span class="badge badge-secondary">Верификация: {{ user.verification }}</span>
+        <span class="badge badge-secondary">Спам: {{ user.spam }}</span></h5>
+        <br>
+        <form method="post">
+        {% if user.verification == 0 %}
+            <button type="submit" class="btn btn-success btn-sm" name="one-add-verification-employer" value="{{user.user_id}}">Верифицировать</button>
+        {% else %}
+            <button type="submit" class="btn btn-danger btn-sm" name="one-add-unverification-employer" value="{{user.user_id}}">Убрать верификацию</button>
+        {% endif %}
+        {% if user.spam == 0 %}
+            <button type="submit" class="btn btn-success btn-sm" name="one-add-in-spam-employer" value="{{user.user_id}}">Добавить в спам</button>
+        {% else %}
+            <button type="submit" class="btn btn-danger btn-sm" name="one-add-of-unspam-employer" value="{{user.user_id}}">Убрать из спама</button>
+        {% endif %}
+        </form>
+        <hr>
+    {% endfor %}
+{% endblock %}
