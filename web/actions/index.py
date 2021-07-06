@@ -1,3 +1,5 @@
+import socket 
+
 from objects.globals import app
 from flask import render_template, request, redirect, url_for
 
@@ -5,6 +7,10 @@ from db_models.Users import User
 
 @app.route("/", methods=["GET", "POST"])
 async def index():
+
+    hostname = socket.gethostname()
+    ip_adress = socket.gethostbyname(hostname)
+
     main_user:int = 0
 
     if request.method == "POST":
@@ -38,4 +44,4 @@ async def index():
         user_find_data= await User.objects.filter(user_id=main_user).all()
         return render_template("find_user.html", user_data=user_find_data)
 
-    return render_template("index.html")
+    return render_template("index.html", ip_adress=ip_adress)
