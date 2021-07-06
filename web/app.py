@@ -12,10 +12,10 @@ from json import loads
 async def main():
 
     with open(r"config.json") as read_config:
-        config = loads(read_config.read())
+        globals.config = loads(read_config.read())
 
     globals.app = Flask(__name__)
-    globals.app.config['SECRET_KEY'] = config["SECRET_KEY"]
+    globals.app.config['SECRET_KEY'] = globals.config["SECRET_KEY"]
     globals.app.config['TEMPLATES_AUTO_RELOAD'] = True 
 
     #Database
