@@ -12,7 +12,7 @@ from objects.globals import config
 async def index():
 
     user_info = loads(get(config["USER_INFO_URL"]).text)
-    ip_adress = user_info["ipAddress"]
+    ip_adress = user_info["query"]
 
     if request.method == "POST":
         if "get-user-id" in request.form:
