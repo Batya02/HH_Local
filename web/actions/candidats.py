@@ -3,6 +3,7 @@ from flask import render_template, request
 
 from db_models.Candidats import Candidat
 from db_models.Users import User
+from db_models.Resume import Resume
 from db_models.AdminAuth import AdminAuth
 
 @app.route("/candidats", methods=["GET", "POST"])
@@ -41,7 +42,8 @@ async def candidats():
             await user_spam_status.update(spam=0)
         
         more_info_candidat = await User.objects.filter(user_id=main_user).all()
-        return render_template("more-information-candidat.html", user_data=more_info_candidat)
+        resume_data = await Resume.objects.filter(user_id=main_user).all()
+        return render_template("more-information-candidat.html", user_data=more_info_candidat, resume=resume_data)
 
     candidats_data = await Candidat.objects.all()
     return render_template("candidats.html", candidats=candidats_data, ip_adress=ip_adress)
