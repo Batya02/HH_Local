@@ -1,30 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for user in user_data %}
+    {% for _ in user_data %}
         <h2 style="color: white;">Основной аккаунт</h2>
-        <h5><span class="badge badge-info" style="color: black;">ID: {{ user.id }}</span>
-        <span class="badge badge-info" style="color: black;">User Id: {{ user.user_id }}</span>
-        {% if user.username != None %}
-            <a href="https://t.me/{{user.username}}" class="badge badge-info" style="color: black;">Username: @{{ user.username }}</a>
+        <h5><span class="badge badge-info" style="color: black;">ID: {{_.id}}</span>
+        <span class="badge badge-info" style="color: black;">User Id: {{_.user_id}}</span>
+        {% if _.username != None %}
+            <a href="https://t.me/{{_.username}}" class="badge badge-info" style="color: black;">Username: @{{_.username}}</a>
         {% else %}
             <span class="badge badge-info" style="color: black;">Username: Отсутствует</span>
         {% endif %}
-        <span class="badge badge-info" style="color: black;">Дата регистрации: {{ (user.created | string)[:-7]  }}</span>
-        <span class="badge badge-info" style="color: black;">Тип: {{ user.type }}</span>
-        <span class="badge badge-secondary" style="color: black;">Верификация: {{ user.verification }}</span>
-        <span class="badge badge-secondary" style="color: black;">Спам: {{ user.spam }}</span></h5>
+        <span class="badge badge-info" style="color: black;">Дата регистрации: {{(_.created | string)[:-7]}}</span>
+        <span class="badge badge-info" style="color: black;">Тип: {{_.type}}</span>
+        <span class="badge badge-secondary" style="color: black;">Верификация: {{_.verification}}</span>
+        <span class="badge badge-secondary" style="color: black;">Спам: {{_.spam}}</span></h5>
         <br>
         <form method="post">
-        {% if user.verification == 0 %}
-            <button type="submit" class="btn btn-success btn-sm" name="one-add-verification-employer" value="{{user.user_id}}">Верифицировать</button>
+        {% if _.verification == 0 %}
+            <button type="submit" class="btn btn-success btn-sm" name="one-add-verification-employer" value="{{_.user_id}}">Верифицировать</button>
         {% else %}
-            <button type="submit" class="btn btn-danger btn-sm" name="one-add-unverification-employer" value="{{user.user_id}}">Убрать верификацию</button>
+            <button type="submit" class="btn btn-danger btn-sm" name="one-add-unverification-employer" value="{{_.user_id}}">Убрать верификацию</button>
         {% endif %}
-        {% if user.spam == 0 %}
-            <button type="submit" class="btn btn-success btn-sm" name="one-add-in-spam-employer" value="{{user.user_id}}">Добавить в спам</button>
+        {% if _.spam == 0 %}
+            <button type="submit" class="btn btn-success btn-sm" name="one-add-in-spam-employer" value="{{_.user_id}}">Добавить в спам</button>
         {% else %}
-            <button type="submit" class="btn btn-danger btn-sm" name="one-add-of-unspam-employer" value="{{user.user_id}}">Убрать из спама</button>
+            <button type="submit" class="btn btn-danger btn-sm" name="one-add-of-unspam-employer" value="{{_.user_id}}">Убрать из спама</button>
         {% endif %}
         </form>
         <hr>
@@ -32,19 +32,19 @@
     {% if applications == [] %}
     {% else %}
         <h4 style="color: white;">Заявки</h4>
-        {% for application in applications %}
+        {% for _ in applications %}
             <div class="jumbotron jumbotron-fluid h-7 p-3" >
             <div class="container">
-                <h1 class="display-6">ID: {{application.id}}</h1>
-                <p class="lead">Опыт работы: {{application.experience}}
+                <h1 class="display-6">ID: {{_.id}}</h1>
+                <p class="lead">Опыт работы: {{_.experience}}
                     <br>
-                    Должность: {{application.position}}
+                    Должность: {{_.position}}
                     <br>
-                    Возраст: {{application.age}}
+                    Возраст: {{_.age}}
                     <br>
-                    Зарплата: {{application.wage}}
+                    Зарплата: {{_.wage}}
                     <br>
-                    Задачи: {{application.tasks}}</p>
+                    Задачи: {{_.tasks}}</p>
             </div>
             </div>
         {% endfor %}

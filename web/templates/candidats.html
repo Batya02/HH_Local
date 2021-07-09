@@ -2,26 +2,26 @@
 
 {% block content %}
     <title>{% block title %}{% endblock %} Candidats </title>
-    {% for candidat in candidats %} 
+    {% for _ in candidats %} 
         <div class="btn-group dropright">
-          <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{candidat.user_id}}
+          <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{_.user_id}}
           </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <form method="post">
-                <button type="submit" class="dropdown-item" type="button" name="more-information-candidat" value="{{candidat.user_id}}">Больше информации</button>
+                <button type="submit" class="dropdown-item" type="button" name="more-information-candidat" value="{{_.user_id}}">Больше информации</button>
                 </form>
             </div>
         </div>
         <br>
-        <h5><span class="badge badge-primary" style="color: black;">ID: {{ candidat.id }}</span>
-        <span class="badge badge-primary" style="color: black;">Дата создания: {{ (candidat.created|string)[:-7] }}</span>
+        <h5><span class="badge badge-primary" style="color: black;">ID: {{_.id}}</span>
+        <span class="badge badge-primary" style="color: black;">Дата создания: {{(_.created|string)[:-7]}}</span>
         <br>
-        <span class="badge badge-primary" style="color: black;">ФИО: {{ candidat.fio }}</span>
-        <span class="badge badge-primary" style="color: black;">Дата рождения: {{ candidat.date_born }}</span>
-        <span class="badge badge-primary" style="color: black;">Адрес: {{ candidat.adress }}</span>
-        <span class="badge badge-primary" style="color: black;">Почта: {{ candidat.email }}</span>
-        <span class="badge badge-primary" style="color: black;">Телефон: {{ candidat.phone }}</span>
-        <span class="badge badge-primary" style="color: black;">Ссылка: {{ candidat.url }}</span></h5>
+        <span class="badge badge-primary" style="color: black;">ФИО: {{_.fio}}</span>
+        <span class="badge badge-primary" style="color: black;">Дата рождения: {{_.date_born}}</span>
+        <span class="badge badge-primary" style="color: black;">Адрес: {{_.adress}}</span>
+        <span class="badge badge-primary" style="color: black;">Почта: {{_.email}}</span>
+        <span class="badge badge-primary" style="color: black;">Телефон: {{_.phone}}</span>
+        <span class="badge badge-primary" style="color: black;">Ссылка: {{_.url}}</span></h5>
         <hr>
     {% endfor %}
 {% endblock %}

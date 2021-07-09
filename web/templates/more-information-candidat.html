@@ -1,32 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for user in user_data %}
+    {% for _ in user_data %}
         <h2 style="color: white;">Основной аккаунт</h2>
-        <h5><span class="badge badge-info" style="color: black;">ID: {{ user.id }}</span>
-        <span class="badge badge-info" style="color: black;">User Id: {{ user.user_id }}</span>
-        {% if user.username != None %}
-            <a href="https://t.me/{{user.username}}" class="badge badge-info" style="color: black;">Username: {{ user.username }}</a>
+        <h5><span class="badge badge-info" style="color: black;">ID: {{ _.id }}</span>
+        <span class="badge badge-info" style="color: black;">User Id: {{ _.user_id }}</span>
+        {% if _.username != None %}
+            <a href="https://t.me/{{_.username}}" class="badge badge-info" style="color: black;">Username: {{ _.username }}</a>
         {% else %}
             <span class="badge badge-info" style="color: black;">Username: Отсутствует</span>
         {% endif %}
-        <span class="badge badge-info" style="color: black;">Дата регистрации: {{ (user.created | string)[:-7]  }}</span>
-        <span class="badge badge-info" style="color: black;">Тип: {{ user.type }}</span>
-        <span class="badge badge-secondary" style="color: black;">Верификация: {{ user.verification }}</span>
-        <span class="badge badge-secondary" style="color: black;">Спам: {{ user.spam }}</span></h5>
+        <span class="badge badge-info" style="color: black;">Дата регистрации: {{ (_.created | string)[:-7]  }}</span>
+        <span class="badge badge-info" style="color: black;">Тип: {{ _.type }}</span>
+        <span class="badge badge-secondary" style="color: black;">Верификация: {{ _.verification }}</span>
+        <span class="badge badge-secondary" style="color: black;">Спам: {{ _.spam }}</span></h5>
         <br>
         <form method="post">
-        {% if user.verification == 0 %}
-            <button type="submit" class="btn btn-success btn-sm" name="one-add-verification-candidat" value="{{user.user_id}}">Верифицировать</button>
+        {% if _.verification == 0 %}
+            <button type="submit" class="btn btn-success btn-sm" name="one-add-verification-candidat" value="{{_.user_id}}">Верифицировать</button>
         {% else %}
-            <button type="submit" class="btn btn-danger btn-sm" name="one-add-unverification-candidat" value="{{user.user_id}}">Убрать верификацию</button>
+            <button type="submit" class="btn btn-danger btn-sm" name="one-add-unverification-candidat" value="{{_.user_id}}">Убрать верификацию</button>
         {% endif %}
-        {% if user.spam == 0 %}
-            <button type="submit" class="btn btn-success btn-sm" name="one-add-in-spam-candidat" value="{{user.user_id}}">Добавить в спам</button>
+        {% if _.spam == 0 %}
+            <button type="submit" class="btn btn-success btn-sm" name="one-add-in-spam-candidat" value="{{_.user_id}}">Добавить в спам</button>
         {% else %}
-            <button type="submit" class="btn btn-danger btn-sm" name="one-add-of-unspam-candidat" value="{{user.user_id}}">Убрать из спама</button>
+            <button type="submit" class="btn btn-danger btn-sm" name="one-add-of-unspam-candidat" value="{{_.user_id}}">Убрать из спама</button>
         {% endif %}
         </form>
         <hr>
     {% endfor %}
+    {% if resume == [] %}
+    {% else %}
+        <h4 style="color: white;">Заявки</h4>
+        {% for _ in resume %}
+            <div class="jumbotron jumbotron-fluid h-7 p-3" >
+            <div class="container">
+                <h1 class="display-6">ID: {{_.id}}</h1>
+                <p class="lead">Опыт работы: {{_.experience}}
+                    <br>
+                    Должность: {{_.position}}
+                    <br>
+                    Возраст: {{_.age}}
+                    <br>
+                    Зарплата: {{_.wage}}
+                    <br>
+                    Задачи: {{_.tasks}}</p>
+            </div>
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
