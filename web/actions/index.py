@@ -2,11 +2,18 @@ from objects.globals import app
 from flask import render_template, request
 
 from db_models.Users import User
+from db_models.AdminAuth import AdminAuth
 
 from objects.globals import ip_adress
 
 @app.route("/", methods=["GET", "POST"])
 async def index():
+
+    admin_data = await AdminAuth.objects.all()
+    admin_data = admin_data[0]
+
+    if request.cookies.get("username") != admin_data.password:
+        return '<a href="/login">Go to login</a>'
 
     if request.method == "POST":
         if "get-user-id" in request.form:

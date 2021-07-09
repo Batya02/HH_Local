@@ -12,7 +12,7 @@ async def candidats():
     admin_data = admin_data[0]
 
     if request.cookies.get("username") != admin_data.password:
-        return 'Do not login'
+        return '<a href="/login">Go to login</a>'
 
     main_user:int = 0
 
