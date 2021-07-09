@@ -1,18 +1,12 @@
 from objects.globals import app
-from flask import render_template, request, redirect, url_for, jsonify
+from flask import render_template, request
 
 from db_models.Users import User
 
-from requests import get
-from json import loads
-
-from objects.globals import config
+from objects.globals import ip_adress
 
 @app.route("/", methods=["GET", "POST"])
 async def index():
-
-    user_info = loads(get(config["USER_INFO_URL"]).text)
-    ip_adress = user_info["query"]
 
     if request.method == "POST":
         if "get-user-id" in request.form:

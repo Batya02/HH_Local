@@ -1,11 +1,19 @@
-from objects.globals import app
+from objects.globals import app, ip_adress
 from flask import render_template, request
 
 from db_models.Candidats import Candidat
 from db_models.Users import User
+from db_models.AdminAuth import AdminAuth
 
 @app.route("/candidats", methods=["GET", "POST"])
 async def candidats():
+
+    admin_data = await AdminAuth.objects.all()
+    admin_data = admin_data[0]
+
+    if request.cookies.get("username") != admin_data.password:
+        return 'Do not login'
+
     main_user:int = 0
 
     if request.method == "POST":
@@ -36,4 +44,4 @@ async def candidats():
         return render_template("more-information-candidat.html", user_data=more_info_candidat)
 
     candidats_data = await Candidat.objects.all()
-    return render_template("candidats.html", candidats=candidats_data)
+    return render_template("candidats.html", candidats=candidats_data, ip_adress=ip_adress)
