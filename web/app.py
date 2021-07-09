@@ -9,7 +9,11 @@ import asyncio
 
 from json import loads
 
+import socket
+
 async def main():
+
+    globals.ip_adress = socket.gethostbyname(socket.gethostname())
 
     with open(r"config.json") as read_config:
         globals.config = loads(read_config.read())
