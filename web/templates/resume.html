@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!--<h1>{% block title %}Candidats{% endblock %}</h1>-->
+    <title>{% block title %}{% endblock %} Resume </title>
     {% for _resume in resume %} 
         <h5><span class="badge badge-primary" style="color: black;">ID: {{ _resume.id }}</span>
         <span class="badge badge-primary" style="color: black;">User Id: {{ _resume.user_id }}</span>

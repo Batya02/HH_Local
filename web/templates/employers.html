@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <title>{% block title %}{% endblock %} Employers </title>
     {% for employer in employers %} 
         <div class="btn-group dropright">
           <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{employer.user_id}}

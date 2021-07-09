@@ -29,4 +29,24 @@
         </form>
         <hr>
     {% endfor %}
+    {% if applications == [] %}
+    {% else %}
+        <h4 style="color: white;">Заявки</h4>
+        {% for application in applications %}
+            <div class="jumbotron jumbotron-fluid h-7 p-3" >
+            <div class="container">
+                <h1 class="display-6">ID: {{application.id}}</h1>
+                <p class="lead">Опыт работы: {{application.experience}}
+                    <br>
+                    Должность: {{application.position}}
+                    <br>
+                    Возраст: {{application.age}}
+                    <br>
+                    Зарплата: {{application.wage}}
+                    <br>
+                    Задачи: {{application.tasks}}</p>
+            </div>
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

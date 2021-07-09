@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!--<h1>{% block title %}Candidats{% endblock %}</h1>-->
+    <title>{% block title %}{% endblock %} Applications </title>
     {% for application in applications %} 
         <h5><span class="badge badge-primary" style="color: black;">ID: {{ application.id }}</span>
         <span class="badge badge-primary" style="color: black;">User Id: {{ application.user_id }}</span>

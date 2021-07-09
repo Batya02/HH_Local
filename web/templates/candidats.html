@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!--<h1>{% block title %}Candidats{% endblock %}</h1>-->
+    <title>{% block title %}{% endblock %} Candidats </title>
     {% for candidat in candidats %} 
         <div class="btn-group dropright">
           <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{candidat.user_id}}
