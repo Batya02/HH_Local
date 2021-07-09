@@ -8,3 +8,7 @@ db_engine = None
 app = None
 
 config:dict = {}
+
+ip_adress:str = ""
+
+state_password = ""
