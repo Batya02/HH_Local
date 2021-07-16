@@ -12,14 +12,30 @@ from db_models.Positions import Positions
 from db_models.Application import Application
 
 EXPERIENCE = [
-                [InlineKeyboardButton(text="Неважно",   callback_data="exp-year_Неважно")], 
-                [InlineKeyboardButton(text="От 1 года", callback_data="exp-year_От 1 года")], 
-                [InlineKeyboardButton(text="От 2 лет",  callback_data="exp-year_От 2 лет")], 
-                [InlineKeyboardButton(text="От 5 лет",  callback_data="exp-year_От 5 лет")], 
-                [InlineKeyboardButton(text="От 10 лет", callback_data="exp-year_От 10 лет")]
-                ]
+        [InlineKeyboardButton(text="Неважно",   callback_data="exp-year_Неважно")], 
+        [InlineKeyboardButton(text="От 1 года", callback_data="exp-year_От 1 года")], 
+        [InlineKeyboardButton(text="От 2 лет",  callback_data="exp-year_От 2 лет")], 
+        [InlineKeyboardButton(text="От 5 лет",  callback_data="exp-year_От 5 лет")], 
+        [InlineKeyboardButton(text="От 10 лет", callback_data="exp-year_От 10 лет")]
+        ]
 
-AGES = []
+AGES = [
+        [InlineKeyboardButton(text="Неважно", callback_data="age_Неважно")], 
+        [InlineKeyboardButton(text="18-25",   callback_data="age_18-25")], 
+        [InlineKeyboardButton(text="25-35",   callback_data="age_25-35")], 
+        [InlineKeyboardButton(text="35-40",   callback_data="age_35-40")], 
+        [InlineKeyboardButton(text="40+",     callback_data="age_40+")], 
+        [InlineKeyboardButton(text="Далее",   callback_data="continue_age")]
+        ]
+
+WAGE = [
+        [InlineKeyboardButton(text="До 15 000",       callback_data="wage_До 15 000")], 
+        [InlineKeyboardButton(text="15 000 - 20 000", callback_data="wage_15 000 - 20 000")], 
+        [InlineKeyboardButton(text="20 000 - 25 000", callback_data="wage_20 000 - 25 000")], 
+        [InlineKeyboardButton(text="25 000 - 30 000", callback_data="wage_25 000 - 30 000")], 
+        [InlineKeyboardButton(text="30 000 - 35 000", callback_data="wage_30 000 - 35 000")], 
+        [InlineKeyboardButton(text="Указать ЗП",      callback_data="point_out_wage")]
+        ]
 
 @dp.message_handler(lambda message: message.text == "Создать заявку")
 async def create_application(message: Message):
@@ -85,14 +101,7 @@ async def get_experience_targ(query: CallbackQuery, state:FSMContext):
     await state.update_data(get_experience_var=experience)
 
     age_buttons = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="Неважно", callback_data="age_Неважно")], 
-            [InlineKeyboardButton(text="18-25",   callback_data="age_18-25")], 
-            [InlineKeyboardButton(text="25-35",   callback_data="age_25-35")], 
-            [InlineKeyboardButton(text="35-40",   callback_data="age_35-40")], 
-            [InlineKeyboardButton(text="40+",     callback_data="age_40+")], 
-            [InlineKeyboardButton(text="Далее",   callback_data="continue_age")]
-        ]
+        inline_keyboard=AGES
     )
 
     return await bot.send_message(
@@ -130,14 +139,7 @@ async def continue_age(query: CallbackQuery, state: FSMContext):
         AGES.clear()
     
     wage_buttons = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [InlineKeyboardButton(text="До 15 000",       callback_data="wage_До 15 000")], 
-            [InlineKeyboardButton(text="15 000 - 20 000", callback_data="wage_15 000 - 20 000")], 
-            [InlineKeyboardButton(text="20 000 - 25 000", callback_data="wage_20 000 - 25 000")], 
-            [InlineKeyboardButton(text="25 000 - 30 000", callback_data="wage_25 000 - 30 000")], 
-            [InlineKeyboardButton(text="30 000 - 35 000", callback_data="wage_30 000 - 35 000")], 
-            [InlineKeyboardButton(text="Указать ЗП",      callback_data="point_out_wage")], 
-        ]
+        inline_keyboard=WAGE
     )
 
     return await bot.send_message(
