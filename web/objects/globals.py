@@ -10,3 +10,5 @@ app = None
 config:dict = {}
 
 ip_adress:str = ""
+
+admin_password:str = ""
