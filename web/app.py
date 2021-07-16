@@ -29,6 +29,13 @@ async def main():
     globals.db_engine = create_engine(str(globals.db.url))
     globals.metadata.create_all(globals.db_engine)
 
+    from db_models.AdminAuth import AdminAuth
+
+    admin_data = await AdminAuth.objects.all()
+
+    #Set admin password
+    globals.admin_password = admin_data[0].password
+
     import actions
 
 if __name__ == "__main__":
