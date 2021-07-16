@@ -1,16 +1,12 @@
-from objects.globals import app, ip_adress
+from objects.globals import app, ip_adress, admin_password
 from flask import render_template, request
 
 from db_models.Resume import Resume
-from db_models.AdminAuth import AdminAuth
 
 @app.route("/resume")
 async def resume():
     
-    admin_data = await AdminAuth.objects.all()
-    admin_data = admin_data[0]
-
-    if request.cookies.get("username") != admin_data.password:
+    if request.cookies.get("username") != admin_password:
         return '<a href="/login">Go to login</a>'
 
     resume_data = await Resume.objects.all()

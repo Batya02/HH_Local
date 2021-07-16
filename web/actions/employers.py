@@ -1,18 +1,14 @@
-from objects.globals import app, ip_adress
+from objects.globals import app, ip_adress, admin_password
 from flask import render_template, request
 
 from db_models.Employers import Employer
 from db_models.Applications import Application
 from db_models.Users import User
-from db_models.AdminAuth import AdminAuth
 
 @app.route("/employers", methods=["GET", "POST"])
 async def employers():
 
-    admin_data = await AdminAuth.objects.all()
-    admin_data = admin_data[0]
-
-    if request.cookies.get("username") != admin_data.password:
+    if request.cookies.get("username") != admin_password:
         return '<a href="/login">Go to login</a>'
 
     main_user:int = 0

@@ -1,5 +1,4 @@
 from objects.globals import app
-from objects import globals 
 from flask import render_template, request, flash, redirect, url_for, make_response
 
 from db_models.AdminAuth import AdminAuth
